@@ -18,10 +18,29 @@ public:
 		return track;
 	}
 
+	bool isPlaying() { return playing; }
+	void togglePlaying() { playing = !playing; }
+
+	void setBpm(double bpm) { this->bpm = bpm; }
+	double getBpm() { return bpm; }
+	
+	void setPlayedLength(double playedLength) { this->playedLength = playedLength; }
+	double getPlayedLength() { return playedLength; }
+
+	void setPlayBar(CStatic* playBar) { this->playBar = playBar; }
+	CStatic* getPlayBar() { return playBar; }
+
 private:
 	PadManager() {
 		track = new Track();
+		playing = 0;
+		playedLength = 0;
+		bpm = 80;
 	}
 	static PadManager* instance;
 	Track* track;
+	bool playing;
+	double bpm;
+	double playedLength;
+	CStatic* playBar;
 };

@@ -2,4 +2,3 @@
 #include "PadManager.h"
 
 PadManager* PadManager::instance = NULL;
-

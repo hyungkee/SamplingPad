@@ -17,11 +17,13 @@ public:
 	const int getSize() { return size; }
 	const int* getNotePtr() { return note; }
 	const bool getMute() { return mute; }
+	const bool  getNote(int _pos) { return note[_pos]; }
 
 	// setter
 	void setSize(int _size) {  // 기존 노트들은 새 채널의 맨앞에 밀착
 		int* past = note;
 		note = new int[_size];
+		for (int i = 0; i < _size; i++)	note[i] = 0;
 		for (int i = 0; i < min(size, _size); i++)	note[i] = past[i];
 		delete[] past;
 		size = _size;
@@ -30,6 +32,7 @@ public:
 	void scaleUp(int _scale) { // 기존 노트들이 새 채널에 퍼져서 위치
 		int* past = note;
 		note = new int[size * _scale];
+		for (int i = 0; i < size * _scale; i++)	note[i] = 0;
 		for (int i = 0; i < size; i++)	note[i * _scale] = past[i];
 		delete[] past;
 		size = size * _scale;

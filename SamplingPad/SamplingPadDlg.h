@@ -26,6 +26,7 @@ public:
 protected:
 	HICON m_hIcon;
 
+
 	// 생성된 메시지 맵 함수
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);
@@ -33,7 +34,8 @@ protected:
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
 	virtual BOOL OnCommand(WPARAM wParam, LPARAM lParam);
-	void updateTrackButtons();
+	void updateTrackViews();
+
 public:
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
 	afx_msg void OnLbnSelchangeList1();
@@ -44,4 +46,12 @@ public:
 //	afx_msg void OnCbnEditchangeCombo1();
 	afx_msg void OnCbnSelchangeCombo1();
 	afx_msg void OnCbnSelchangeCombo2();
+	afx_msg void OnCbnSelchangeCombo(int id);
+
+	afx_msg void clearTrackButtons();
+	
+	afx_msg void OnBnClickedButton1();
+	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT nCtlColor);
+	afx_msg void updatePlayBar();
 };
